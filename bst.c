@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Node {
+struct Node {
     int data;
     struct Node* left;
     struct Node* right;
-} Node;
+};
 
 // Node creation function
-Node* createNode(int data) {
-    Node* newNode = (Node*)malloc(sizeof(Node));
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     if (!newNode) {
         printf("Memory error\n");
         return NULL;
@@ -20,7 +20,7 @@ Node* createNode(int data) {
 }
 
 // Insert node into BST
-Node* insertNode(Node* root, int data) {
+struct Node* insertNode(struct Node* root, int data) {
     if (root == NULL) {
         root = createNode(data);
     } else if (data < root->data) {
@@ -34,7 +34,7 @@ Node* insertNode(Node* root, int data) {
 }
 
 // Search for node in BST
-int searchNode(Node* root, int data) {
+int searchNode(struct Node* root, int data) {
     if (root == NULL) return 0;
     if (data < root->data) return searchNode(root->left, data);
     if (data > root->data) return searchNode(root->right, data);
@@ -42,7 +42,7 @@ int searchNode(Node* root, int data) {
 }
 
 // Find minimum value node in BST
-Node* findMin(Node* root) {
+struct Node* findMin(struct Node* root) {
     while (root->left != NULL) {
         root = root->left;
     }
@@ -50,7 +50,7 @@ Node* findMin(Node* root) {
 }
 
 // Delete node from BST
-Node* deleteNode(Node* root, int data) {
+struct Node* deleteNode(struct Node* root, int data) {
     if (root == NULL) return root;
 
     if (data < root->data) {
@@ -65,19 +65,19 @@ Node* deleteNode(Node* root, int data) {
         }
         // Case 2: One child (right)
         else if (root->left == NULL) {
-            Node* temp = root;
+            struct Node* temp = root;
             root = root->right;
             free(temp);
         }
         // Case 3: One child (left)
         else if (root->right == NULL) {
-            Node* temp = root;
+            struct Node* temp = root;
             root = root->left;
             free(temp);
         }
         // Case 4: Two children
         else {
-            Node* temp = findMin(root->right);
+            struct Node* temp = findMin(root->right);
             root->data = temp->data;
             root->right = deleteNode(root->right, temp->data);
         }
@@ -86,7 +86,7 @@ Node* deleteNode(Node* root, int data) {
 }
 
 // Inorder traversal
-void inorderTraversal(Node* root) {
+void inorderTraversal(struct Node* root) {
     if (root != NULL) {
         inorderTraversal(root->left);
         printf("%d ", root->data);
@@ -95,7 +95,7 @@ void inorderTraversal(Node* root) {
 }
 
 // Preorder traversal
-void preorderTraversal(Node* root) {
+void preorderTraversal(struct Node* root) {
     if (root != NULL) {
         printf("%d ", root->data);
         preorderTraversal(root->left);
@@ -104,7 +104,7 @@ void preorderTraversal(Node* root) {
 }
 
 // Postorder traversal
-void postorderTraversal(Node* root) {
+void postorderTraversal(struct Node* root) {
     if (root != NULL) {
         postorderTraversal(root->left);
         postorderTraversal(root->right);
@@ -113,7 +113,7 @@ void postorderTraversal(Node* root) {
 }
 
 int main() {
-    Node* root = NULL;
+    struct Node* root = NULL;
     int choice, data;
 
     while (1) {
@@ -137,7 +137,10 @@ int main() {
             case 2:
                 printf("Enter data to search: ");
                 scanf("%d", &data);
-                printf("%d found in the tree\n", data);
+                if (searchNode(root, data))
+                    printf("%d found in the tree\n", data);
+                else
+                    printf("%d not found in the tree\n", data);
                 break;
             case 3:
                 printf("Enter data to delete: ");
@@ -166,6 +169,5 @@ int main() {
                 printf("Invalid choice. Please choose again.\n");
         }
     }
-
     return 0;
 }
