@@ -1,0 +1,167 @@
+Initialize front = -1, rear = -1, and define queue[n].
+Enqueue(x):
+If (rear + 1) % n == front, print "Overflow".
+If queue is empty, set front = rear = 0, else update rear = (rear + 1) % n.
+Insert x at queue[rear].
+Dequeue():
+If queue is empty, print "Queue is empty".
+Print queue[front], and update front = (front + 1) % n.
+If front == rear, reset front = rear = -1.
+Display():
+If queue is empty, print "Queue is empty".
+Print elements from front to rear, handling circular order.
+Main:
+Repeatedly take user input and perform corresponding operations.
+---------------------------------------------------------------------------------------
+Input array size (n) from the user.
+Allocate memory using malloc() or calloc():
+malloc(n * sizeof(int)) allocates uninitialized memory.
+calloc(n, sizeof(int)) allocates memory initialized to zero.
+If allocation fails, print an error and exit.
+Take input for array elements from the user.
+Display the array elements.
+Resize memory using realloc():
+Input new size (new_size) from the user.
+realloc() resizes the memory block.
+If reallocation fails, print an error and exit.
+Take additional input if the array size increased.
+Display the resized array elements.
+Free allocated memory using free() to prevent memory leaks.
+Exit the program.
+----------------------------------------------------------------------------------------
+Input the infix expression.
+
+Initialize an empty stack for operators and an empty result string.
+
+Process each character in the infix expression:
+
+If it's an operand (letter/number), append it to the result.
+
+If it's an opening parenthesis ('('), push it onto the stack.
+
+If it's a closing parenthesis (')'), pop and append operators from the stack until '(' is found, then discard '('.
+
+If it's an operator (+, -, *, /, ^):
+
+Pop and append operators from the stack while they have higher or equal precedence.
+
+Push the current operator onto the stack.
+
+Pop and append all remaining operators from the stack to the result.
+
+Output the postfix expression.
+----------------------------------------------------------------------------------------
+### **Algorithm for Queue Implementation using Array**
+1. **Initialize** `front = -1` and `rear = -1` to represent an empty queue.  
+2. **Enqueue Operation** (`enque(x)`):
+   - If `rear == n-1`, print **"Overflow"** (queue is full).  
+   - If queue is empty (`front == -1 && rear == -1`), set `front = rear = 0` and insert `x`.  
+   - Otherwise, increment `rear` and insert `x` at `queue[rear]`.  
+3. **Dequeue Operation** (`dequeue()`):  
+   - If queue is empty (`front == -1 && rear == -1`), print **"The queue is empty"**.  
+   - Otherwise, print **dequeued element** and increment `front`.  
+4. **Display Operation** (`display()`):  
+   - If queue is empty, print **"The queue is empty"**.  
+   - Otherwise, print elements from `front` to `rear`.  
+5. **Menu-driven Execution (`main()`)**:  
+   - **Loop** until the user selects **Exit (4)**.  
+   - **Perform** enqueue, dequeue, or display based on user input.
+---------------------------------------------------------------------------------------
+queue ll
+Define Node Structure:
+
+Each node contains data and a pointer next to the next node.
+
+Create a Node (createNode(data)):
+
+Allocate memory for a new node.
+
+Assign data and set next = NULL.
+
+Return the new node.
+
+Enqueue Operation (enqueue(rear, data)):
+
+Create a new node.
+
+If queue is empty (rear == NULL), return the new node as rear.
+
+Otherwise, link rear->next to the new node and update rear.
+
+Dequeue Operation (dequeue(front)):
+
+If queue is empty (front == NULL), print "Queue underflow".
+
+Store front in temp, move front to front->next, free temp, and print dequeued element.
+
+If queue becomes empty (front == NULL), set rear = NULL.
+
+Peek Operation (peek(front)):
+
+If queue is empty, print "Queue is empty" and return -1.
+
+Otherwise, return front->data.
+
+Check if Queue is Empty (isEmpty(front)):
+
+Return 1 if front == NULL, else return 0.
+
+Print Queue (printQueue(front)):
+
+Traverse from front to rear and print elements.
+
+Menu-driven Execution (main()):
+
+Loop until the user selects Exit (6).
+
+Perform enqueue, dequeue, peek, print, or check if queue is empty based on user input.
+--------------------------------------------------------------------------------------------------
+stack ll
+Define Node Structure:
+
+Each node contains data and a pointer next to the next node.
+
+Create a Node (createNode(data)):
+
+Allocate memory for a new node.
+
+Assign data and set next = NULL.
+
+Return the new node.
+
+Push Operation (push(top, data)):
+
+Create a new node.
+
+Set newNode->next = top.
+
+Update top to the new node.
+
+Print the pushed element.
+
+Pop Operation (pop(top)):
+
+If stack is empty (top == NULL), print "Stack underflow".
+
+Store top in temp, move top to top->next, free temp, and print popped element.
+
+Peek Operation (peek(top)):
+
+If stack is empty, print "Stack is empty" and return -1.
+
+Otherwise, return top->data.
+
+Check if Stack is Empty (isEmpty(top)):
+
+Return 1 if top == NULL, else return 0.
+
+Print Stack (printStack(top)):
+
+Traverse from top and print elements.
+
+Menu-driven Execution (main()):
+
+Loop until the user selects Exit (6).
+
+Perform push, pop, peek, print, or check if stack is empty based on user input.
+-----------------------------------------------------------------------------------------
