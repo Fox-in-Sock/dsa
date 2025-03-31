@@ -1,3 +1,33 @@
+// Algorithm for Binary Search Tree Operations
+// 1. Create a structure Node with data, left, and right pointers.
+// 2. Define a function createNode to allocate memory for a new node and initialize it.
+// 3. Define insertNode function:
+//    - If root is NULL, create a new node and return it.
+//    - If data is less than root's data, recursively insert in left subtree.
+//    - If data is greater than root's data, recursively insert in right subtree.
+// 4. Define searchNode function:
+//    - If root is NULL, return 0 (not found).
+//    - If data is less than root's data, search in left subtree.
+//    - If data is greater, search in right subtree.
+//    - If data matches, return 1 (found).
+// 5. Define findMin function to get the node with the smallest value in a subtree.
+// 6. Define deleteNode function:
+//    - If root is NULL, return NULL.
+//    - If data is less than root's data, delete from left subtree.
+//    - If data is greater, delete from right subtree.
+//    - If data matches:
+//      - Case 1: No child → delete the node.
+//      - Case 2: One child → replace node with child.
+//      - Case 3: Two children → replace with min value node from right subtree and delete it.
+// 7. Define inorderTraversal function to print nodes in ascending order.
+// 8. Define preorderTraversal function to print root, left subtree, then right subtree.
+// 9. Define postorderTraversal function to print left subtree, right subtree, then root.
+// 10. Implement main function:
+//     - Initialize root as NULL.
+//     - Provide menu options for insertion, deletion, search, and traversal.
+//     - Accept user input and perform corresponding BST operations.
+//     - Exit when the user selects exit option.
+
 #include <stdio.h>
 #include <stdlib.h>
 
